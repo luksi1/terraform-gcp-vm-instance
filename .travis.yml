@@ -1,0 +1,17 @@
+dist: bionic
+os: linux
+
+stages:
+- syntax
+
+matrix:
+  include:
+  - stage: syntax
+    name: Shellchecker
+    script: docker run --rm -v "$(pwd)":/mnt koalaman/shellcheck:stable ./*.sh
+  - name: "Terraform Validate"
+    script: docker run --rm -t hashicorp/terraform:light validate
+  - name: "Terraform Format"
+    script: docker run --rm -t hashicorp/terraform:light fmt -check=true -write=false -diff=true
+  - name: Tflint
+    script: find . -type f -name "*.tf" -exec dirname {} \;|sort -u |while read line; do pushd $line; docker run --rm -v $(pwd):/data -t wata727/tflint; popd; done
