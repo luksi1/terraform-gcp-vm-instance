@@ -22,7 +22,7 @@ ssh_pub_key_file: ./id_rsa.pub
 
 ### Powershell
 ```powershell
-start.gcp.instance -instance_name foo -project my-project -credential secrets/my.json
+start.gcp.instance.ps1 -instance_name foo -project my-project -credential secrets/my.json
 ```
 
 ### Bash
