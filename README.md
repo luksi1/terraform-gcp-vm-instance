@@ -32,6 +32,7 @@ terraform apply -auto-approve -var="project=my-project" -var="instance_name=foo"
 
 ##### Additional Terraform parameters
 Simply add any one of the following variable by appending `-var="key=value"`
+
 - region (default: europe-west4)
 - zone (default: europe-west4-a)
 - image (default: ubuntu-1804-lts)
