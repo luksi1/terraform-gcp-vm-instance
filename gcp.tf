@@ -60,7 +60,7 @@ resource "google_compute_instance" "vm_instance" {
     }
   }
 
-  metadata_startup_script = "sudo add-apt-repository ppa:longsleep/golang-backports; curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add; sudo add-apt-repository 'deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable'; sudo apt-get update; sudo apt-get install -y golang-go git docker"
+  metadata_startup_script = "sudo add-apt-repository ppa:longsleep/golang-backports; curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add; sudo add-apt-repository 'deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable'; curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -; sudo apt-get update; sudo apt-get install -y golang-go git docker openjdk-11 maven nodejs"
 
   metadata = {
     ssh-keys = "${file(var.ssh_pub_key_file)}"
