@@ -2,3 +2,37 @@
 
 # terraform-gcp-vm-instance
 Configure a bare bones GCP VM instance with Terraform
+
+## Dependencies
+- Terraform
+
+## Up and running
+The following examples will create GCP VM instance with:
+
+region: europe-west4
+zone: europe-west-a
+image: ubuntu-1804-lts
+machine_type: f1-micro
+ssh_pub_key_file: ./id_rsa.pub
+
+### Powershell
+```powershell
+start.gcp.instance -instance_name foo -project my-project -credential secrets/my.json
+```
+
+### Bash
+```bash
+start.gcp.instance.sh -i foo -p my-project -c secrets/my.json
+```
+
+### Terraform
+```terraform
+terraform apply -auto-approve -var="project=my-project" -var="instance_name=foo" -var="credentials=./secrets/my.json"
+```
+
+##### Additional Terraform parameters
+- region (default: europe-west4)
+- zone (default: europe-west4-a)
+- image (default: ubuntu-1804-lts)
+- machine_type (default: f1-micro)
+- ssh_pub_key_file (default: ./id_rsa.pub)
