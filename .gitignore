@@ -1,3 +1,5 @@
 id_rsa.pub
 *json
 .terraform
+*.tfstate
+*.backup
