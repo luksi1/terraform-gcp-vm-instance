@@ -4,9 +4,9 @@
 Configure a bare bones GCP VM instance with Terraform
 
 ## Description
-This terraform file, and accompanying bash and powershell wrappers, provide a simple way to start up a GCP VM instance with SSH access. Additionally, Terraform will output the external IP of the instance.
+This terraform file, and accompanying bash and powershell wrappers, provide a simple way to create up a GCP VM instance with SSH access. Additionally, Terraform will output the external IP of the instance.
 
-The private use case for this was simply to start up a GCP VM instance to work via VSCode remote, but this could be used for anything.
+The private use case for this was simply to create up a GCP VM instance to work via VSCode remote, but this could be used for anything.
 
 ## Dependencies
 - Terraform
@@ -22,12 +22,12 @@ ssh_pub_key_file: ./id_rsa.pub
 
 ### Powershell
 ```powershell
-start.gcp.instance.ps1 -instance_name foo -project my-project -credential secrets/my.json
+create.gcp.instance.ps1 -instance_name foo -project my-project -credential secrets/my.json
 ```
 
 ### Bash
 ```bash
-start.gcp.instance.sh -i foo -p my-project -c secrets/my.json
+create.gcp.instance.sh -i foo -p my-project -c secrets/my.json
 ```
 
 ### Terraform
