@@ -17,7 +17,7 @@ param (
   [string] $credentials_file = 'secrets/secret.json'
 )
 
-[hashtable] $vars = @{
+$vars = @{
   instance_name    = $instance_name;
   project          = $project;
   region           = $region;
@@ -25,9 +25,9 @@ param (
   image            = $image;
   machine_type     = $machine_type;
   ssh_pub_key_file = $ssh_pub_key_file;
-  credentials_file = $credentials_file
+  credentials_file = $credentials_file;
 }
 
-$vars.Keys | ForEach-Object { $variables += "-var=`"$_=$vars.Item($_)`" " }
+$vars.Keys | ForEach-Object { $variables += "-var=`"$_=$($vars.Item($_))`" " }
 
 Invoke-Expression "& terraform $action -auto-approve $variables"
