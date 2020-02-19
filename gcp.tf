@@ -66,7 +66,7 @@ resource "google_compute_instance" "vm_instance" {
   # git
   # go
   # docker
-  metadata_startup_script = "wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb; sudo dpkg -i packages-microsoft-prod.deb; sudo add-apt-repository -y ppa:longsleep/golang-backports; curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add; sudo add-apt-repository 'deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable'; curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -; sudo add-apt-repository universe; sudo apt-get update; sudo apt-get install -y golang-go powershell git docker openjdk-11-jdk maven nodejs"
+  metadata_startup_script = "curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add; sudo add-apt-repository 'deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable'; sudo apt-get update; sudo apt-get install -y git docker openjdk-11-jdk maven"
 
   metadata = {
     ssh-keys = "${file(var.ssh_pub_key_file)}"
