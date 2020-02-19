@@ -7,9 +7,7 @@ stages:
 matrix:
   include:
   - stage: syntax
-  #  name: Shellchecker
-  #  script: for i in $(ls .*sh); do docker run --rm -v "$(pwd)":/mnt koalaman/shellcheck:stable $i; done
-  - name: "Terraform Validate"
+    name: "Terraform Validate"
     script: docker run --rm -t hashicorp/terraform:light validate
   - name: "Terraform Format"
     script: docker run --rm -t hashicorp/terraform:light fmt -check=true -write=false -diff=true
