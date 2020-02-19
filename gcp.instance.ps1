@@ -1,8 +1,14 @@
 param (
-  [parameter(Mandatory)]
+  [Parameter(Mandatory)]
+  [ValidateNotNullOrEmpty()]
   [string] $instance_name,
-  [parameter(Mandatory)]
+  [Parameter(Mandatory)]
+  [ValidateNotNullOrEmpty()]
   [string] $project,
+  [Parameter(Mandatory, Position=0)]
+  [ValidateNotNullOrEmpty()]
+  [ValidateSet('apply','destroy')]
+  [string] $action,
   [string] $region = 'europe-west4',
   [string] $zone = 'europe-west4-a',
   [string] $image = 'ubuntu-1804-lts',
@@ -24,4 +30,4 @@ param (
 
 $vars.Keys | ForEach-Object { $variables += "-var=`"$_=$vars.Item($_)`" " }
 
-Invoke-Expression "& terraform apply -auto-approve $variables"
+Invoke-Expression "& terraform $action -auto-approve $variables"
