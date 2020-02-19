@@ -27,7 +27,7 @@ ssh_pub_key_file: ./id_rsa.pub
 gcp.instance.ps1 -action apply -instance_name foo -project my-project -credential secrets/my.json
 ```
 
-###### Destory instance
+###### Destroy instance
 ```powershell
 gcp.instance.ps1 -action destroy -instance_name foo -project my-project -credential secrets/my.json
 ```
