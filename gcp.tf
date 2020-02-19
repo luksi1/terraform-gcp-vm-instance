@@ -3,7 +3,7 @@ variable "instance_name" {
   description = "The name of the instance"
 }
 
-variable "credentials" {
+variable "credentials_file" {
   type        = string
   description = "The json file contains the credentials"
 }
@@ -44,7 +44,7 @@ variable "ssh_pub_key_file" {
 }
 
 provider "google" {
-  credentials = var.credentials
+  credentials = var.credentials_file
   project = var.project
   region  = var.region
 }
@@ -59,8 +59,14 @@ resource "google_compute_instance" "vm_instance" {
       image = var.image
     }
   }
-
-  metadata_startup_script = "sudo add-apt-repository ppa:longsleep/golang-backports; curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add; sudo add-apt-repository 'deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable'; curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -; sudo apt-get update; sudo apt-get install -y golang-go git docker openjdk-11 maven nodejs"
+  
+  # Java 11
+  # maven
+  # powershell
+  # git
+  # go
+  # docker
+  metadata_startup_script = "wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb; sudo dpkg -i packages-microsoft-prod.deb; sudo add-apt-repository -y ppa:longsleep/golang-backports; curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add; sudo add-apt-repository 'deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable'; curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -; sudo add-apt-repository universe; sudo apt-get update; sudo apt-get install -y golang-go powershell git docker openjdk-11-jdk maven nodejs"
 
   metadata = {
     ssh-keys = "${file(var.ssh_pub_key_file)}"
