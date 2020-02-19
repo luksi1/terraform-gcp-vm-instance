@@ -21,13 +21,15 @@ machine_type: f1-micro
 ssh_pub_key_file: ./id_rsa.pub
 
 ### Powershell
+
+###### Create instance
 ```powershell
-create.gcp.instance.ps1 -instance_name foo -project my-project -credential secrets/my.json
+gcp.instance.ps1 -action apply -instance_name foo -project my-project -credential secrets/my.json
 ```
 
-### Bash
-```bash
-create.gcp.instance.sh -i foo -p my-project -c secrets/my.json
+###### Destory instance
+```powershell
+gcp.instance.ps1 -action destroy -instance_name foo -project my-project -credential secrets/my.json
 ```
 
 ### Terraform
