@@ -24,17 +24,17 @@ The following examples will create GCP VM instance with:
 
 ###### Create instance
 ```powershell
-gcp.instance.ps1 -action apply -instance_name foo -project my-project -credential secrets/my.json
+gcp.instance.ps1 -action apply -instance_name foo -project my-project -credentials_file secrets/my.json
 ```
 
 ###### Destroy instance
 ```powershell
-gcp.instance.ps1 -action destroy -instance_name foo -project my-project -credential secrets/my.json
+gcp.instance.ps1 -action destroy -instance_name foo -project my-project -credentials_file secrets/my.json
 ```
 
 ### Terraform
 ```terraform
-terraform apply -auto-approve -var="project=my-project" -var="instance_name=foo" -var="credentials=./secrets/my.json"
+terraform apply -auto-approve -var="project=my-project" -var="instance_name=foo" -var="credentials_file=./secrets/my.json"
 ```
 
 ##### Additional Terraform parameters
