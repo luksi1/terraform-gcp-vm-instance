@@ -14,11 +14,11 @@ The private use case for this was simply to create up a GCP VM instance to work 
 ## Up and running
 The following examples will create GCP VM instance with:
 
-region: europe-west4
-zone: europe-west-a
-image: ubuntu-1804-lts
-machine_type: f1-micro
-ssh_pub_key_file: ./id_rsa.pub
+- region: europe-west4
+- zone: europe-west-a
+- image: ubuntu-1804-lts
+- machine_type: f1-micro
+- ssh_pub_key_file: ./id_rsa.pub
 
 ### Powershell
 
